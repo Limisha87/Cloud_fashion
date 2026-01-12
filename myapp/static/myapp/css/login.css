@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* ===== Background ===== */
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e5fa3, #2f80c1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ===== Container ===== */
+
+.auth-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 30px;
+}
+
+
+/* ===== Card ===== */
+
+.auth-card {
+    background: transparent;
+    text-align: center;
+}
+
+
+/* ===== Title ===== */
+
+.auth-card h2 {
+    color: #000;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+
+/* ===== Labels ===== */
+
+.auth-card label {
+    display: block;
+    text-align: left;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #000;
+}
+
+
+/* ===== Inputs ===== */
+
+.auth-card input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+
+/* ===== Button ===== */
+
+.auth-card button {
+    width: 100%;
+    padding: 14px;
+    background: #2d7dbf;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-card button:hover {
+    background: #246aa3;
+}
+
+
+/* ===== Bottom Text ===== */
+
+.auth-card p {
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.auth-card a {
+    color: #9b2cf2;
+    text-decoration: none;
+    font-weight: 500;
+}
