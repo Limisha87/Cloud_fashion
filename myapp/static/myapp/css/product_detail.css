@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f6f7;
+}
+
+
+/* Page center */
+
+.product-page {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+
+/* Card */
+
+.product-card {
+    display: flex;
+    gap: 40px;
+    background: #ffffff;
+    width: 900px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Image */
+
+.product-image img {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+
+/* Right content */
+
+.product-info {
+    flex: 1;
+}
+
+
+/* Title */
+
+.product-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+/* Description */
+
+.product-desc {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+
+/* Price */
+
+.product-price {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+/* Stock */
+
+.product-stock {
+    font-size: 14px;
+    color: green;
+    margin-bottom: 25px;
+}
+
+
+/* Buttons */
+
+.product-actions {
+    display: flex;
+    gap: 15px;
+}
+
+
+/* Add to Cart button - Amazon style */
+
+.btn-add-cart {
+    background-color: #ffd814;
+    /* Amazon yellow */
+    color: #000000;
+    /* Black text */
+    border: 1px solid #fcd200;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn-add-cart:hover {
+    background-color: #f7ca00;
+    color: #000000;
+}
+
+
+/* Back */
+
+.btn-back {
+    border: 1px solid #d5d9d9;
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #000;
+}
+
+.btn-back:hover {
+    background-color: #f0f2f2;
+}

@@ -3,7 +3,6 @@
  <html class="no-js"> 
 <head>
 
-
     <meta charset="utf-8">
     <title>Kool Store - Responsive eCommerce Template</title>
 
@@ -26,9 +25,6 @@
     <script src="{% static 'myapp/js/main.js' %}"></script>
     <script src="{% static 'myapp/js/plugins.js' %}"></script>
 
-
-    
-
 </head>
 <body>
 
@@ -42,7 +38,6 @@
     </ul>
     {% endif %}
         
-    <header class="site-header">
         <div class="top-header">
             <div class="container">
                 <div class="row">
@@ -50,15 +45,16 @@
                         <div class="top-header-left">
                             <a href="{% url 'signup_view' %}">Sign Up</a>
                             <a href="{% url 'login_view' %}">Log In</a>
-                        </div> <!-- /.top-header-left -->
-                    </div> <!-- /.col-md-6 -->
+                            <a href="{% url 'logout' %}">Logout</a>
+                            <a href="{% url 'product_list' %}">Product</a>
+                        </div> 
+                    </div> 
                     <div class="col-md-6 col-sm-6">
                         <div class="social-icons">
                             <ul>
-                                <li><a href="#" class="fa fa-facebook"></a></li>
-                                <li><a href="#" class="fa fa-dribbble"></a></li>
-                                <li><a href="#" class="fa fa-twitter"></a></li>
                                 <li><a href="#" class="fa fa-linkedin"></a></li>
+                                <li><a href="{% url 'cart' %}" class="fa fa-shopping-cart"></a></li>                               
+                                <li><a href="{% url 'checkout' %}" class="fa fa-check"></a></li>
                             </ul>
                             <div class="clearfix"></div>
                         </div> <!-- /.social-icons -->
@@ -76,8 +72,6 @@
                     </div> <!-- /.col-md-4 -->
                     <div class="col-md-8 col-sm-6 col-xs-4">
                         <div class="main-menu">
-                            <a href="#" class="toggle-menu">
-                                <i class="fa fa-bars"></i>
                             </a>
                             <ul class="menu">
                                 <li><a href="#">Home</a></li>

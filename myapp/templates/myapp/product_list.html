@@ -1,0 +1,81 @@
+{% comment %} {% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+    <link rel="stylesheet" href="{% static 'myapp/css/product_list.css' %}">
+</head>
+<body>
+
+<h1>Products</h1>
+
+<div class="products">
+    {% for product in products %}
+    <div class="product-card">
+
+        {% if product.image %}
+            <img src="{{ product.image.url }}" width="200">
+        {% endif %}
+
+        <h3>{{ product.name }}</h3>
+        <p>Price: ₹{{ product.price }}</p>
+
+    <a href="{% url 'add_to_cart' product.id %}"class="add-to-cart-btn">
+        Add to Cart
+    </a>
+
+    <a href="{% url 'product_detail' product.id %}" class="btn-outline">
+        View Details
+    </a>
+    </div>
+
+    {% empty %}
+        <p>No products found</p>
+    {% endfor %}
+
+</div>
+ {% endcomment %}
+
+ {% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+    <link rel="stylesheet" href="{% static 'myapp/css/product_list.css' %}">
+</head>
+<body>
+
+<div class="products-wrapper">
+
+    <h1 class="page-title">Products</h1>
+
+    <div class="products-list">
+
+        {% for product in products %}
+        <div class="product-card">
+
+            <div class="product-info">
+                <h3 class="product-name">{{ product.name }}</h3>
+                <p class="product-price">₹{{ product.price }}</p>
+            </div>
+
+            <div class="product-buttons">
+                <a href="{% url 'add_to_cart' product.id %}" class="btn btn-cart">
+                    Add to Cart
+                </a>
+
+                <a href="{% url 'product_detail' product.id %}" class="btn btn-view">
+                    View Details
+                </a>
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>
+

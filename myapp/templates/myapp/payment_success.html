@@ -1,0 +1,19 @@
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+
+@csrf_exempt
+def payment_success(request):
+    if request.method == "POST":
+        order_id = request.POST.get("razorpay_order_id")
+        payment_id = request.POST.get("razorpay_payment_id")
+
+        payment = Payment.objects.get(order_id=order_id)
+        payment.payment_id = payment_id
+        payment.status = "Success"
+        payment.order.is_paid = True
+        payment.order.save()
+        payment.save()
+
+        return HttpResponse("Payment Successful")
+
+    return HttpResponse("Payment Failed")

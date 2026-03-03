@@ -93,6 +93,7 @@ DATABASES = {
     }
 }
 
+ALLOWED_HOSTS = ['*']
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -140,3 +141,23 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+LOGIN_URL = 'login'
+
+
+# settings.py
+import os
+
+RAZORPAY_KEY_ID = os.getenv("RAZORPAY_KEY_ID")
+RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET")
+
+# =======================
+# Razorpay Configuration
+# =======================
+
+RAZORPAY_KEY_ID = "rzp_test_xxxxxxxxxx"
+RAZORPAY_KEY_SECRET = "xxxxxxxxxxxxxx"
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

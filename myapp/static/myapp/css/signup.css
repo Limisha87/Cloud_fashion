@@ -1,187 +1,119 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* ===== Global Page Style ===== */
 
-/* ===== RESET ===== */
-
-* {
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f6f8;
+    color: #222;
 }
 
 
-/* ===== FULL PAGE ===== */
+/* ===== Center Container ===== */
 
-html,
-body {
-    height: 100%;
-}
-
-
-/* ===== BACKGROUND ===== */
-
-body {
-    background: linear-gradient(120deg, #1f5f99, #2a7dbf);
+.signup-container {
+    min-height: 100vh;
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: center;
 }
 
 
-/* ===== MAIN CONTAINER ===== */
+/* ===== Card ===== */
 
-.auth-container {
-    width: 100%;
-    max-width: 1000px;
-    height: 600px;
+.signup-card {
     background: #ffffff;
-    border-radius: 18px;
-    display: flex;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+    width: 420px;
+    padding: 30px 35px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 
-/* ===== LEFT SIDE (IMAGE / BRAND) ===== */
+/* ===== Heading ===== */
 
-.auth-left {
-    width: 50%;
-    background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://images.unsplash.com/photo-1521334884684-d80222895322");
-    background-size: cover;
-    background-position: center;
-    color: #ffffff;
-    padding: 60px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.auth-left h1 {
-    font-size: 40px;
-    font-weight: 700;
-}
-
-.auth-left p {
-    margin-top: 15px;
-    font-size: 15px;
-    opacity: 0.9;
-}
-
-
-/* ===== RIGHT SIDE ===== */
-
-.auth-right {
-    width: 50%;
-    padding: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-/* ===== WHITE FORM BOX ===== */
-
-.auth-box {
-    width: 100%;
-    background: #ffffff;
-    padding: 35px 40px;
-    border-radius: 16px;
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
-}
-
-
-/* ===== TITLE ===== */
-
-.auth-box h2 {
-    font-size: 32px;
-    font-weight: 700;
-    color: #2a7dbf;
-    margin-bottom: 25px;
+.signup-card h2 {
     text-align: center;
+    margin-bottom: 25px;
+    font-size: 26px;
+    font-weight: 600;
 }
 
 
-/* ===== INPUT ===== */
+/* ===== Form Group ===== */
 
 .form-group {
     margin-bottom: 18px;
 }
 
-.form-control {
-    width: 100%;
-    height: 52px;
-    border-radius: 10px;
-    border: 1px solid #dddddd;
-    padding: 12px 16px;
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
     font-size: 14px;
-    transition: 0.3s;
 }
 
-.form-control:focus {
-    border-color: #2a7dbf;
-    box-shadow: 0 0 0 3px rgba(42, 125, 191, 0.25);
+
+/* ===== Input Fields ===== */
+
+.form-group input {
+    width: 100%;
+    padding: 11px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
     outline: none;
+    transition: border 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #f5c400;
 }
 
 
-/* ===== BUTTON ===== */
+/* ===== Signup Button ===== */
 
-.btn-kool {
+.signup-btn {
     width: 100%;
-    height: 52px;
-    border-radius: 10px;
+    background-color: #f5c400;
+    color: #000;
     border: none;
-    background: linear-gradient(135deg, #2a7dbf, #1f5f99);
-    color: #ffffff;
-    font-size: 16px;
+    padding: 12px;
+    font-size: 15px;
     font-weight: 600;
-    margin-top: 10px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background 0.3s ease;
 }
 
-.btn-kool:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(42, 125, 191, 0.5);
+.signup-btn:hover {
+    background-color: #e0b200;
 }
 
 
-/* ===== LINKS ===== */
+/* ===== Login Redirect ===== */
 
-.auth-links {
+.login-link {
     margin-top: 18px;
-    font-size: 14px;
     text-align: center;
+    font-size: 14px;
 }
 
-.auth-links a {
-    color: #2a7dbf;
-    font-weight: 600;
+.login-link a {
+    color: #f5c400;
     text-decoration: none;
+    font-weight: 500;
 }
 
-.auth-links a:hover {
+.login-link a:hover {
     text-decoration: underline;
 }
 
 
-/* ===== RESPONSIVE ===== */
+/* ===== Error / Message ===== */
 
-@media (max-width: 900px) {
-    .auth-container {
-        flex-direction: column;
-        height: auto;
-    }
-    .auth-left {
-        width: 100%;
-        height: 240px;
-        text-align: center;
-    }
-    .auth-right {
-        width: 100%;
-        padding: 30px;
-    }
-    .auth-box {
-        margin-top: -40px;
-    }
+.form-error {
+    color: red;
+    font-size: 13px;
+    margin-bottom: 10px;
 }

@@ -1,0 +1,58 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'myapp/css/cart.css' %}">
+
+<div class="cart-container">
+
+    <h2>Your Cart</h2>
+
+    {% if products %}
+
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Subtotal</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>₹{{ product.price }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>₹{{ product.subtotal }}</td>
+                <td>
+                    <a class="remove-btn" href="{% url 'remove_one_from_cart' product.id %}">
+                        Remove
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="cart-footer">
+        <h3>Total: ₹{{ total }}</h3>
+
+        <a class="continue-btn" href="{% url 'product_list' %}">
+            Continue Shopping
+        </a>
+
+        <button class="checkout-btn">
+            Checkout
+        </button>
+    </div>
+
+    {% else %}
+        <p class="empty-cart">Your cart is empty</p>
+        <a class="continue-btn" href="{% url 'product_list' %}">
+            Shop Now
+        </a>
+    {% endif %}
+
+</div>

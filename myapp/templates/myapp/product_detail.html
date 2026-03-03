@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ product.name }}</title>
+    <link rel="stylesheet" href="{% static 'myapp/css/product_detail.css' %}">
+</head>
+<body>
+
+<div class="product-page">
+
+    <div class="product-card">
+
+        <!-- LEFT : IMAGE -->
+        <div class="product-image">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% else %}
+                <img src="https://via.placeholder.com/300">
+            {% endif %}
+        </div>
+
+        <!-- RIGHT : DETAILS -->
+        <div class="product-info">
+            <h1 class="product-title">{{ product.name }}</h1>
+
+            <p class="product-desc">{{ product.description }}</p>
+
+            <p class="product-price">₹{{ product.price }}</p>
+
+            <p class="product-stock">
+                {% if product.stock > 0 %}
+                    In Stock ({{ product.stock }})
+                {% else %}
+                    Out of Stock
+                {% endif %}
+            </p>
+
+            <div class="product-actions">
+                <a href="{% url 'add_to_cart' product.id %}" class="btn-cart">
+                    Add to Cart
+                </a>
+
+                <a href="{% url 'product_list' %}" class="btn-back">
+                    Back to Products
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
