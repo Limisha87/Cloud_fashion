@@ -8,11 +8,14 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('products/', views.product_list, name='product_list'),
     path('product/<int:pk>/', views.product_detail, name='product_detail'),
-    path('cart/', views.cart_view, name='cart'),
-    path('add-to-cart/<int:pk>/', views.add_to_cart, name='add_to_cart'),
+    path("cart/", views.cart_page, name="cart"),
+    path("add-to-cart/<int:product_id>/", views.add_to_cart, name="add_to_cart"),
     path('remove-one/<int:pk>/',views.remove_one_from_cart,name='remove_one_from_cart'),
     path("checkout/", views.checkout, name="checkout"),
     path('razorpay-webhook/', views.razorpay_webhook, name='razorpay_webhook'),
+    path('payment_success/', views.payment_success, name='payment_success'),
+    path('payment/', views.payment, name='payment'),
+    path('dashboard/', views.dashboard, name='dashboard'),
     
  ]
 

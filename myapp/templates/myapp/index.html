@@ -47,12 +47,13 @@
                             <a href="{% url 'login_view' %}">Log In</a>
                             <a href="{% url 'logout' %}">Logout</a>
                             <a href="{% url 'product_list' %}">Product</a>
+                            <a href="{% url 'dashboard' %}">Orders</a>
                         </div> 
                     </div> 
                     <div class="col-md-6 col-sm-6">
                         <div class="social-icons">
                             <ul>
-                                <li><a href="#" class="fa fa-linkedin"></a></li>
+                                {% comment %} <li><a href="#" class="fa fa-linkedin"></a></li> {% endcomment %}
                                 <li><a href="{% url 'cart' %}" class="fa fa-shopping-cart"></a></li>                               
                                 <li><a href="{% url 'checkout' %}" class="fa fa-check"></a></li>
                             </ul>
@@ -113,13 +114,18 @@
                 <div class="col-md-3">
                     <div class="product-item-1">
                         <div class="product-thumb">
-                            <img src="{% static 'myapp/images/gallery-image-1.jpg' %}" alt="Product Title">
-                        </div> <!-- /.product-thumb -->
-                        <div class="product-content">
-                            <h5><a href="#">Kool Shirt</a></h5>
+                        <a href="{% url 'product_detail' 1 %}">
+                            <img src="{% static 'myapp/images/yellow_onepic.png' %}" alt="Product Title">
+                        </a>
+                    </div>
+
+    <div class="product-content">
+        <h5>
+            <a href="{% url 'product_detail' 1 %}">Kool Dress</a>
+        </h5>
                             <span class="tagline">Partner Name</span>
                             <span class="price">$25.00</span>
-                            <p>Doloremque quo possimus quas necessitatibus blanditiis excepturi. Commodi, sunt asperiores tenetur deleniti labore!</p>
+                            <p></p>
                         </div> <!-- /.product-content -->
                     </div> <!-- /.product-item -->
                 </div> <!-- /.col-md-3 -->
@@ -127,24 +133,30 @@
                     <div class="product-holder">
                         <div class="product-item-2">
                             <div class="product-thumb">
-                                <img src="{% static 'myapp/images/featured/1.jpg'%}" alt="Product Title">
-                            </div> <!-- /.product-thumb -->
-                            <div class="product-content overlay">
-                                <h5><a href="#">Kooler Shirt</a></h5>
+                                <a href="{% url 'product_detail' 2 %}">
+                                    <img src="{% static 'myapp/images/featured/blue_shirt.png'%}" alt="Blue Shirt">
+                                </a>
+                    </div>
+    <div class="product-content">
+        <h5>
+            <a href="{% url 'product_detail' 2 %}">Kooler Shirt</a>
+        </h5>
                                 <span class="tagline">Partner Name</span>
                                 <span class="price">$30.00</span>
-                                <p>Doloremque quo possimus quas necessitatibus blanditiis excepturi. Commodi, sunt tenetur deleniti labore!</p>
+                                <p></p>
                             </div> <!-- /.product-content -->
                         </div> <!-- /.product-item-2 -->
                         <div class="product-item-2">
                             <div class="product-thumb">
-                                <img src="{% static 'myapp/images/featured/2.jpg'%}" alt="Product Title">
+                                <a href="{% url 'product_detail' 3 %}">
+                                    <img src="{% static 'myapp/images/featured/rect_kids.png'%}" alt="Kids Dress">
+                                </a>    
                             </div> <!-- /.product-thumb -->
-                            <div class="product-content overlay">
-                                <h5><a href="#">Koolest Shirt</a></h5>
+                            <div class="product-content">
+                                <h5><a href="{% url 'product_detail' 3 %}">Stylish Kids wear </h5>
                                 <span class="tagline">Partner Name</span>
                                 <span class="price">$45.00</span>
-                                <p>Doloremque quo possimus quas necessitatibus blanditiis excepturi. Commodi, sunt tenetur deleniti labore!</p>
+                                <p></p>
                             </div> <!-- /.product-content -->
                         </div> <!-- /.product-item-2 -->
                         <div class="clearfix"></div>
@@ -153,25 +165,27 @@
                 <div class="col-md-4">
                     <div class="product-item-3">
                         <div class="product-thumb">
-                            <img src="{% static 'myapp/images/featured/6.jpg'%}" alt="">
+                            <a href="{% url 'product_detail' 4 %}">
+                                <img src="{% static 'myapp/images/featured/white.png'%}" alt="White Dress">
+                            </a>
                         </div> <!-- /.product-thumb -->
                         <div class="product-content">
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
-                                    <h5><a href="#">Name Of Shirt</a></h5>
+                                    <h5><a href="{% url 'product_detail' 4 %}">short dress</a></h5>
                                     <span class="tagline">Partner Name</span>
                                     <span class="price">$20.00</span>
                                 </div> <!-- /.col-md-6 -->
                                 <div class="col-md-6 col-sm-6">
-                                    <div class="full-row">
+                                    {% comment %} <div class="full-row">
                                         <label for="cat">Gender:</label>
                                         <select name="cat" id="cat" class="postform">
                                             <option value="-1">- Select -</option>
                                             <option class="level-0" value="49">Female</option>
                                             <option class="level-0" value="56">Male</option>
                                         </select>
-                                    </div>
-                                    <div class="full-row">
+                                    </div> {% endcomment %}
+                                    {% comment %} <div class="full-row">
                                         <label for="cat1">Size:</label>
                                         <select name="cat1" id="cat1" class="postform">
                                             <option value="-1">- Select -</option>
@@ -191,13 +205,13 @@
                                             <option class="level-0" value="4">Black</option>
                                             <option class="level-0" value="4">Wlack</option>
                                         </select>
-                                    </div>
+                                    </div> {% endcomment %}
                                 </div> <!-- /.col-md-6 -->
                                 <div class="col-md-12 col-sm-12">
                                     <div class="button-holder">
                                         <a href="#" class="red-btn"><i class="fa fa-angle-down"></i></a>
                                     </div> <!-- /.button-holder -->
-                                </div> <!-- /.col-md-12 -->
+                                </div> <!-- /.col-md-12 --> 
                             </div> <!-- /.row -->
                         </div> <!-- /.product-content -->
                     </div> <!-- /.product-item-3 -->
@@ -207,37 +221,50 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="product-item-4">
                         <div class="product-thumb">
-                            <img src="{% static 'myapp/images/featured/3.jpg'%}" alt="Product Title">
+                            <a href="{% url 'product_detail' 5 %}">
+                            <img src="{% static 'myapp/images/featured/rect_boy1.png'%}" alt="Men's wear">
+                            </a>
                         </div> <!-- /.product-thumb -->
-                        <div class="product-content overlay">
-                            <h5><a href="#">Name Of Shirt</a></h5>
+                        <div class="product-content">
+                            <h5><a href="{% url 'product_detail' 5 %}">Men's Wear</a></h5>
                             <span class="tagline">Partner Name</span>
                             <span class="price">$60.00</span>
-                            <p>Doloremque quo possimus quas necessitatibus.</p>
+                            <p></p>
                         </div> <!-- /.product-content -->
                     </div> <!-- /.product-item-4 -->
                 </div> <!-- /.col-md-4 -->
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="product-item-4">
                         <div class="product-thumb">
-                            <img src="{% static 'myapp/images/featured/4.jpg'%}" alt="Product Title">
+                                <a href="{% url 'product_detail' 7 %}">
+                            <img src="{% static 'myapp/images/featured/westren.png'%}" alt="Girl's wear">
+                            </a>
                         </div> <!-- /.product-thumb -->
-                        <div class="product-content overlay">
-                            <h5><a href="#">Name Of Shirt</a></h5>
+                        <div class="product-content">
+                            <h5><a href="{% url 'product_detail' 7 %}">Stylish Wear</a></h5>
                             <span class="tagline">Partner Name</span>
                             <span class="price">$30.00</span>
-                            <p>Doloremque quo possimus quas necessitatibus.</p>
+                            <p></p>
                         </div> <!-- /.product-content -->
                     </div> <!-- /.product-item-4 -->
                 </div> <!-- /.col-md-4 -->
-                <div class="col-md-4 col-sm-12 col-xs-12">
-                    <div class="ads-placemenet">
-                        <img src="{% static 'myapp/images/featured/5.jpg'%}" alt="">
-                    </div> <!-- /.ads-placement -->
+                <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="product-item-4">
+                        <div class="product-thumb">
+                            <a href="{% url 'product_detail' 6 %}">
+                            <img src="{% static 'myapp/images/featured/rect_boy1.png'%}" alt="Men's wear">
+                            </a>
+                        </div> <!-- /.product-thumb -->
+                        <div class="product-content">
+                            <h5><a href="{% url 'product_detail' 6 %}">Men's Wear</a></h5>
+                            <span class="tagline">Partner Name</span>
+                            <span class="price">$60.00</span>
+                            <p>Morden Classy look</p>
+                        </div> <!-- /.product-content -->
+                    </div> <!-- /.product-item-4 -->
                 </div> <!-- /.col-md-4 -->
-            </div> <!-- /.row -->
-        </div> <!-- /.container -->
-    </div> <!-- /.content-section -->
+                
 
     <div class="content-section">
         <div class="container">
@@ -250,10 +277,10 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="product-item">
                         <div class="product-thumb">
-                            <img src="{% static 'myapp/images/gallery-image-2.jpg'%}" alt="">
+                            <img src="{% static 'myapp/images/1.png'%}" alt="">
                         </div> <!-- /.product-thum -->
                         <div class="product-content">
-                            <h5><a href="#">Name of Shirt</a></h5>
+                            <h5><a href="#">utensils & other productes</a></h5>
                             <span class="price">$40.00</span>
                         </div> <!-- /.product-content -->
                     </div> <!-- /.product-item -->
@@ -261,10 +288,10 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="product-item">
                         <div class="product-thumb">
-                            <img src="{% static 'myapp/images/gallery-image-3.jpg'%}" alt="">
+                            <img src="{% static 'myapp/images/2.png'%}" alt="">
                         </div> <!-- /.product-thum -->
                         <div class="product-content">
-                            <h5><a href="#">Sport Shirt</a></h5>
+                            <h5><a href="#">home styles products</a></h5>
                             <span class="price">$40.00</span>
                         </div> <!-- /.product-content -->
                     </div> <!-- /.product-item -->
@@ -272,10 +299,10 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="product-item">
                         <div class="product-thumb">
-                            <img src="{% static 'myapp/images/gallery-image-4.jpg'%}" alt="">
+                            <img src="{% static 'myapp/images/3.png'%}" alt="">
                         </div> <!-- /.product-thum -->
                         <div class="product-content">
-                            <h5><a href="#">Elegant Shirt</a></h5>
+                            <h5><a href="#">groceries & home essentials</a></h5>
                             <span class="price">$60.00</span>
                         </div> <!-- /.product-content -->
                     </div> <!-- /.product-item -->
@@ -283,10 +310,10 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="product-item">
                         <div class="product-thumb">
-                            <img src="{% static 'myapp/images/gallery-image-5.jpg'%}" alt="">
+                            <img src="{% static 'myapp/images/4.png'%}" alt="">
                         </div> <!-- /.product-thum -->
                         <div class="product-content">
-                            <h5><a href="#">Another New Shirt</a></h5>
+                            <h5><a href="#">electronics items</a></h5>
                             <span class="price">$80.00</span>
                         </div> <!-- /.product-content -->
                     </div> <!-- /.product-item -->
@@ -306,10 +333,10 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="product-item-vote">
                         <div class="product-thumb">
-                            <img src="{% static 'myapp/images/products/1.jpg'%}" alt="">
+                            <img src="{% static 'myapp/images/products/a.png'%}" alt="">
                         </div> <!-- /.product-thum -->
                         <div class="product-content">
-                            <h5><a href="#">Name of Shirt</a></h5>
+                            <h5><a href="#">Eye shadows kit 500$</a></h5>
                             <span class="tagline">By: Catherine</span>
                             <ul class="progess-bars">
                                 <li>
@@ -331,10 +358,10 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="product-item-vote">
                         <div class="product-thumb">
-                            <img src="{% static 'myapp/images/products/2.jpg'%}" alt="">
+                            <img src="{% static 'myapp/images/products/b.png'%}" alt="">
                         </div> <!-- /.product-thum -->
                         <div class="product-content">
-                            <h5><a href="#">Name of Shirt</a></h5>
+                            <h5><a href="#">Goggles 40$</a></h5>
                             <span class="tagline">By: Rebecca</span>
                             <ul class="progess-bars">
                                 <li>
@@ -356,10 +383,10 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="product-item-vote">
                         <div class="product-thumb">
-                            <img src="{% static 'myapp/images/products/3.jpg'%}" alt="">
+                            <img src="{% static 'myapp/images/products/c.png'%}" alt="">
                         </div> <!-- /.product-thum -->
                         <div class="product-content">
-                            <h5><a href="#">Name of Shirt</a></h5>
+                            <h5><a href="#">Buds 150$</a></h5>
                             <span class="tagline">By: Catherine</span>
                             <ul class="progess-bars">
                                 <li>
@@ -381,10 +408,10 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="product-item-vote">
                         <div class="product-thumb">
-                            <img src="{% static 'myapp/images/products/4.jpg'%}" alt="">
+                            <img src="{% static 'myapp/images/products/d.png'%}" alt="">
                         </div> <!-- /.product-thum -->
                         <div class="product-content">
-                            <h5><a href="#">Name of Shirt</a></h5>
+                            <h5><a href="#">Shoes 750$</a></h5>
                             <span class="tagline">By: Rebecca</span>
                             <ul class="progess-bars">
                                 <li>

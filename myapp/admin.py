@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import Product, ProductImage
 from .models import Payment
+from .models import Cart
+from .models import Order
 
 
 # Inline for ProductImage
@@ -18,3 +20,9 @@ admin.site.register(Product, ProductAdmin)
 
 
 admin.site.register(Payment)
+
+
+admin.site.register(Cart)
+
+
+admin.site.register(Order)

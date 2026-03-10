@@ -2,17 +2,17 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from .models import Product, Order, Payment
+from .models import Product, Order, Payment, Cart
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 import razorpay
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 import json
-
-
-
 User = get_user_model()
+
+webhook_secret = "cloudfashion123"
+
 
 def home(request):
     return render(request, 'myapp/index.html')
@@ -20,20 +20,23 @@ def home(request):
 
 def login_view(request):
     if request.method == "POST":
-        email = request.POST.get('email')
-        password = request.POST.get('password')
+        email = request.POST.get("email")
+        password = request.POST.get("password")
 
-        user = authenticate(request, email=email, password=password)
+        print("EMAIL:", email)
+        print("PASSWORD:", password)
+
+        user = authenticate(request, username=email, password=password)
+
+        print("USER:", user)
 
         if user is not None:
             login(request, user)
-            messages.success(request, 'Login successful')
-            return redirect('home')
+            return redirect("home")
         else:
-            messages.error(request, 'Invalid email or password')
-            return redirect('login_view')
+            messages.error(request, "Invalid email or password")
 
-    return render(request, 'myapp/login.html')
+    return render(request, "myapp/login.html")
 
 
 def signup_view(request):
@@ -52,8 +55,7 @@ def signup_view(request):
 
         user = User.objects.create_user(
             email=email,
-            password=password1,
-            is_active=True
+            password=password1
         )
 
         messages.success(request, 'Account created successfully')
@@ -71,22 +73,30 @@ def product_list(request):
     products = Product.objects.all()
     return render(request, 'myapp/product_list.html', {'products': products})
 
+
 def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
     return render(request, 'myapp/product_detail.html', {'product': product})
 
 
-def add_to_cart(request, pk):
-    product = get_object_or_404(Product, pk=pk)
+def add_to_cart(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
 
     cart = request.session.get('cart', {})
 
-    if str(pk) in cart:
-        cart[str(pk)] += 1
+    # Convert key to string
+    product_id = str(product_id)
+
+    if product_id in cart:
+        cart[product_id] += 1
     else:
-        cart[str(pk)] = 1
+        cart[product_id] = 1
 
     request.session['cart'] = cart
+    request.session.modified = True
+
+    print("CART DATA:", request.session['cart'])  # Debug
+
     return redirect('cart')
 
 
@@ -105,7 +115,7 @@ def remove_one_from_cart(request, pk):
 
 
 
-def cart_view(request):
+def cart_page(request):
     cart = request.session.get('cart', {})
     products = []
     total = 0
@@ -197,50 +207,220 @@ def razorpay_webhook(request):
 def payment(request):
     return render(request, 'payment.html')
 
-
 @login_required
 def checkout(request):
-    cart = request.session.get('cart', {})
-    if not cart:
-        messages.error(request, "Cart is empty")
-        return redirect('cart')
 
-    total = 0
+    cart = request.session.get('cart', {})
+    total_amount = 0
+
     for product_id, quantity in cart.items():
         product = Product.objects.get(id=product_id)
-        total += product.price * quantity
+        total_amount += product.price * quantity
 
-    oorder = Order.objects.create(
-    user=request.user,
-    total_amount=total,
-    status='Pending'
-)
+    print("TOTAL AMOUNT:", total_amount)
+
+    if total_amount <= 0:
+        messages.error(request, "Your cart is empty")
+        return redirect("cart")
+
+    amount_in_paise = int(total_amount)
 
     client = razorpay.Client(
         auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET)
     )
 
     payment_data = {
-        "amount": int(total * 100),
+        "amount": amount_in_paise,
         "currency": "INR",
+        "payment_capture": 1
     }
 
     razorpay_order = client.order.create(data=payment_data)
 
-    payment = Payment.objects.create(
-        user=request.user,
-        order=order,
-        order_id=razorpay_order['id'],
-        amount=total,
-        status="Pending"
-    )
-
-    context = {
-        "order": order,
-        "payment": payment,
+    return render(request, "myapp/checkout.html", {
+        "razorpay_order_id": razorpay_order["id"],
         "razorpay_key": settings.RAZORPAY_KEY_ID,
-        "amount": int(total * 100),
-        "order_id": razorpay_order['id'],
-    }
+        "amount": amount_in_paise
+    })
+    
+    
+def dashboard(request):
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')
 
-    return render(request, "checkout.html", context)
+    return render(request, "myapp/dashboard.html", {
+        "orders": orders
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

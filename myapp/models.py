@@ -82,13 +82,30 @@ class Payment(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     # order_id = models.CharField(max_length=100, unique=True)
-    order_id = models.CharField(max_length=100, unique=True, null=True, blank=True)
+    # order_id = models.CharField(max_length=100, unique=True, null=True, blank=True)
     payment_id = models.CharField(max_length=100, blank=True, null=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     status = models.CharField(max_length=20, choices=PAYMENT_STATUS, default='Pending')
     created_at = models.DateTimeField(auto_now_add=True)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
 
+
+    
     def __str__(self):
         return f"{self.user.username} - {self.status}"
+    
+    
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def total_price(self):
+        return self.product.price * self.quantity
+
+    def __str__(self):
+        return f"{self.user.username} - {self.product.name}"
+    
     
     

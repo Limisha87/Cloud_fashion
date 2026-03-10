@@ -157,7 +157,7 @@ RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET")
 # Razorpay Configuration
 # =======================
 
-RAZORPAY_KEY_ID = "rzp_test_xxxxxxxxxx"
-RAZORPAY_KEY_SECRET = "xxxxxxxxxxxxxx"
+RAZORPAY_KEY_ID = "rzp_test_SMhq8bm7VYLUxB"
+RAZORPAY_KEY_SECRET = "9w1s3unXrF57CoPnTBsDY2fy"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

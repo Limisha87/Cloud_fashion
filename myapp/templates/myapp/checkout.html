@@ -14,10 +14,44 @@
         <form action="{% url 'payment' %}" method="POST">
     {% csrf_token %}
     <button type="submit">Proceed to Payment</button>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <a href="{% url 'checkout' %}" class="btn btn-success">
+    Proceed to Checkout
+</a>
     
+<h2>Checkout Page</h2>
+<p>Total Amount: {{ total_amount }}</p>
 
 </form>
 
     </script>
 </form>
+
+
+<h2>Pay ₹{{ amount }}</h2>
+
+{% comment %} <button id="pay-btn">Pay Now</button> {% endcomment %}
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+var options = {
+    "key": "{{ razorpay_key }}",
+    "amount": "{{ amount|floatformat:2 }}00",
+    "currency": "INR",
+    "name": "Cloud Fashion",
+    "order_id": "{{ razorpay_order_id }}",
+
+    "handler": function (response){
+        window.location.href = "/payment-success/?payment_id=" + response.razorpay_payment_id +
+                               "&order_id=" + response.razorpay_order_id +
+                               "&signature=" + response.razorpay_signature;
+    }
+};
+
+var rzp = new Razorpay(options);
+
+document.getElementById('pay-btn').onclick = function(e){
+    rzp.open();
+    e.preventDefault();
+}
+</script>
