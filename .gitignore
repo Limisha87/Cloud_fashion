@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+.venv/
+env/
+venv/
+
+# Django
+db.sqlite3
+media/
+staticfiles/
+
+# Environment Variables
+.env
+myenv/
+.venv/
+
+# VS Code
+.vscode/
+
+# Docker
+*.log
+docker-compose.override.yml
+
+# Migrations cache
+*/migrations/__pycache__/
+
+# OS Files
+.DS_Store
+Thumbs.db
